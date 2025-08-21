@@ -2,51 +2,68 @@
 
 ---
 
-## Part 1: Initial Project Ideas
+## Part 1: Initial Project Ideas  
 
-### 1. Project Idea 1: Recipe Recommender
-- **Description:** A system that recommends recipes based on ingredients the user has on hand. The user enters ingredients, and the system matches them to recipes using predefined rules.  
+### 1. Project Idea 1: Simple Medical Diagnostic Tool  
+- **Description:** A system that suggests possible conditions based on symptoms the user reports. The user enters symptoms, and the system matches them to conditions using predefined rules.  
 - **Rule-Based Approach:**  
-  - The system checks for exact matches and partial matches with the ingredients required for recipes in a dataset.  
-  - Missing ingredients are suggested for partial matches.
-
-### 2. Project Idea 2: Simple Chatbot
-- **Description:** A chatbot that responds to user inputs with predefined answers. The chatbot simulates a conversation by identifying keywords and phrases in user inputs.  
-- **Rule-Based Approach:**  
-  - Responses are based on keywords such as "hello," "help," or "bye."  
-  - For example, if the user says "hello," the system responds with "Hi there! How can I assist you?"
-
-### 3. Project Idea 3: Travel Packing List Generator
-- **Description:** A system that generates a packing list based on the user’s destination, climate, and trip duration.  
-- **Rule-Based Approach:**  
-  - The system uses rules to recommend items.  
-  - For example, if the destination is "beach" and the climate is "hot," the system suggests sunscreen, swimsuits, and sunglasses.
-
-### **Chosen Idea:** Recipe Recommender  
-**Justification:** I chose this project because it is practical and applicable to real-life scenarios. It allows me to work with datasets, apply conditional logic, and create a system that provides meaningful recommendations based on user input.
+  - The system checks for exact and partial matches between the user’s symptoms and each condition’s key features.  
+  - For partial matches, it lists which symptoms are missing.  
+  - Triage rules (red flags) override everything (e.g., “seek immediate care”).  
 
 ---
 
-## Part 2: Rules/Logic for the Chosen System
+### 2. Project Idea 2: Troubleshooting Assistant  
+- **Description:** A system that helps users diagnose problems with their devices, such as a computer that won’t start.  
+- **Rule-Based Approach:**  
+  - The system applies IF–THEN rules to guide the user through possible causes.  
+  - For example:  
+    - IF no power light → suggest checking the power cable.  
+    - IF power light on but no display → suggest checking the monitor.  
+    - IF strange beeping sound → suggest a possible hardware error.  
+  - The rules can expand into a decision tree where each answer leads to the next step.  
 
-The **Recipe Recommender** system will follow these rules:
+---
+
+### 3. Project Idea 3: Rule-Based Game AI  
+- **Description:** A system that provides decision-making for a simple game opponent, such as Tic-Tac-Toe.  
+- **Rule-Based Approach:**  
+  - The system applies strategic IF–THEN rules to decide moves.  
+  - For example:  
+    - IF the AI can win in one move → take that move.  
+    - ELSE IF the opponent can win next turn → block them.  
+    - ELSE IF the center is free → take the center.  
+    - ELSE → pick a random corner.  
+  - Additional heuristics can be added to make the AI more challenging.  
+
+---
+
+### **Chosen Idea:** Simple Medical Diagnostic Tool  
+**Justification:** I chose this project because it is directly related to healthcare, which makes it meaningful and engaging. It demonstrates how rule-based systems can simulate expert reasoning. This project also challenges me to think carefully about symptom-condition mapping and clear decision rules.  
+
+---
+
+## Part 2: Rules/Logic for the Chosen System  
+
+The **Simple Medical Diagnostic Tool** system will follow these rules:  
 
 1. **Exact Match Rule:**  
-   - **IF** all ingredients in a recipe are found in the user’s ingredient list → **Recommend the recipe.**
+   - **IF** all key symptoms for a condition are present → **Suggest that condition.**  
 
 2. **Partial Match Rule:**  
-   - **IF** 75% or more of the ingredients in a recipe match the user’s ingredient list →  
-     - **Recommend the recipe.**  
-     - **Suggest the missing ingredients.**
+   - **IF** at least 50–75% of the symptoms for a condition are present →  
+     - **Suggest the condition as a possibility.**  
+     - **List the missing symptoms.**  
 
-3. **Common Ingredients Rule:**  
-   - Ingredients like salt, pepper, and water are considered optional and will not be counted as missing.
+3. **Red Flag Rule (Triage):**  
+   - **IF** the user reports severe symptoms (e.g., chest pain, difficulty breathing, high fever) →  
+     - **Override everything and recommend immediate medical attention.**  
 
 4. **No Match Rule:**  
-   - **IF** no recipes match → **Suggest adding more ingredients** for better recommendations.
+   - **IF** no conditions match → **Suggest seeking general medical advice or adding more symptoms.**  
 
-5. **Low Ingredient Rule:**  
-   - **IF** fewer than three ingredients are provided → **Notify the user** and suggest adding more ingredients.
+5. **Low Input Rule:**  
+   - **IF** fewer than two symptoms are provided → **Notify the user** to enter more symptoms.
 
 ---
 
@@ -54,27 +71,30 @@ The **Recipe Recommender** system will follow these rules:
 
 Sample input and output: 
 
-Enter your ingredients (comma-separated): chicken, rice, soy sauce
-You are close to making Chicken Fried Rice! Missing: garlic.
+Enter your symptoms (comma-separated): cough, fever, fatigue
+You may have the Flu. Missing: sore throat.
 
-Enter your ingredients (comma-separated): garlic, soy sauce
-No recipes match. Try adding more ingredients.
+Enter your symptoms (comma-separated): chest pain, shortness of breath
+⚠️ Severe symptoms detected! Seek immediate medical care.
 
-Enter your ingredients (comma-separated): pasta, tomatoes, garlic, olive oil
-You can make Spaghetti Pomodoro!
+Enter your symptoms (comma-separated): headache
+Please enter at least two symptoms for better suggestions.
+
+Enter your symptoms (comma-separated): runny nose, sneezing, sore throat
+You may have the Common Cold.
 
 ---
 
-## Part 4: Reflection
+## Part 4: Reflection  
 
-### Project Overview:
-This project involved designing a practical, rule-based system to recommend recipes based on user inputs. The system uses logical conditions (e.g., exact and partial matches) to evaluate user-provided ingredients against recipes in the dataset.
+### Project Overview:  
+This project involved designing a practical, rule-based system to suggest possible conditions based on user inputs. The system uses logical conditions (e.g., exact matches, partial matches, and red flags) to evaluate symptoms against a set of known conditions.  
 
-### Challenges:
-- **Handling Partial Matches:**  
-  Deciding on a threshold (75%) that balances flexibility with accuracy was challenging.
-- **Common Ingredients:**  
-  Ensuring common ingredients like salt and water don’t skew the results. I resolved this by excluding them from the missing ingredient list.
+### Challenges:  
+- **Balancing Matches:**  
+  Deciding how many symptoms are required for a “partial match” was challenging. I set the threshold around 50–75% to balance flexibility with accuracy.  
+- **Red Flag Handling:**  
+  It was important to prioritize safety by creating rules that override normal matches when severe symptoms are detected.  
 
 
 
