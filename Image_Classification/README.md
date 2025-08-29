@@ -53,3 +53,8 @@ Saved output resolution: Because saving uses Matplotlib, the final file size in 
 
 Filename handling: Output is derived as <base>_blurred<ext> so the original is preserved. Errors are handled gracefully with try/except.
 
+Enter image filename (or 'exit' to quit): TokyoGhoul1.jpg
+/mnt/c/Users/MasterDanteDev86/Downloads/CAP320-O The Artificial Intelligence Ecosystem - Online/W3/ICAP/Artificial_Intelligence_Ecosystem/Image_Classification/new_filter.py:31: DeprecationWarning: 'mode' parameter is deprecated and will be removed in Pillow 13 (2026-10-15)
+  sketch = Image.fromarray(dodge, mode="L")
+Processed image saved as 'TokyoGhoul1_sketch.jpg'.
+
