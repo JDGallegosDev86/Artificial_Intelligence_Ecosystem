@@ -30,7 +30,7 @@ with open("Selected_Document.txt", "r", encoding="utf-8") as file:
 
 # Define variables
 chunk_size = 500
-chunk_overlap = 100
+chunk_overlap = 50
 model_name = "sentence-transformers/all-distilroberta-v1"
 top_k = 5
 
